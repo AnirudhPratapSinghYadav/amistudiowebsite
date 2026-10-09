@@ -116,10 +116,15 @@ To add a beat: drop the WAV in `assets/client/`, add a line to `src/content/beat
 
 ## Deploy
 
-`vercel.json` sets the framework, clean URLs, the strict CSP and security headers, cache rules, the
-`/work` to `/music` redirect and the app fallback. `public/_headers` and `public/_redirects` do the
-same on Netlify and Cloudflare Pages. Set `domain` in `src/config/identity.json` before the
-production build so canonical URLs and the sitemap are written.
+Live at **[amistudiowebsite.vercel.app](https://amistudiowebsite.vercel.app)**. The GitHub repo is
+connected to Vercel, so every push to `main` deploys to production and every other branch gets a
+preview URL.
+
+`vercel.json` sets the framework, clean URLs, the strict CSP and security headers, cache rules and
+the `/work` to `/music` redirect. Every route is its own HTML file, and unknown paths get `404.html`
+with a real 404 status and the site's own not-found page. `public/_headers` and `public/_redirects`
+cover Netlify and Cloudflare Pages. `domain` in `src/config/identity.json` drives canonical URLs and
+the sitemap; change it when the client has his own domain.
 
 ## Docs
 
