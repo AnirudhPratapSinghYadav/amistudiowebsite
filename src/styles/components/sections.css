@@ -1,0 +1,82 @@
+/* ============ Quote band ============ */
+.quote-band { position: relative; min-height: 80svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; text-align: center; }
+.quote-band__media { position: absolute; inset: -12% 0; z-index: -2; }
+.quote-band__media img { width: 100%; height: 100%; object-fit: cover; }
+.quote-band::before { content: ''; position: absolute; inset: 0; z-index: -1; background:
+  linear-gradient(180deg, var(--bg-void) 0%, transparent 22%, transparent 78%, var(--bg-void) 100%),
+  radial-gradient(70% 70% at 50% 50%, color-mix(in srgb, var(--bg-void) 62%, transparent), var(--bg-void)); }
+.quote { display: grid; gap: 2rem; justify-items: center; }
+.quote__mark { font: 900 6rem/0.5 var(--font-display); color: var(--magenta); height: 2.5rem; }
+.quote__text { font: italic 500 clamp(1.9rem, 5.5vw, 4.4rem)/1.05 var(--font-display); text-transform: uppercase; letter-spacing: -0.02em; max-width: 20ch; min-height: 3.2em; display: grid; place-items: center; }
+.quote__by { font: 700 0.72rem/1 var(--font-display); letter-spacing: 0.3em; text-transform: uppercase; color: var(--magenta); }
+.quote__dots { display: flex; gap: 0.25rem; }
+.quote__dots button { width: 44px; height: 44px; display: grid; place-items: center; }
+.quote__dots span { width: 26px; height: 3px; border-radius: 2px; background: var(--line-strong); transition: background-color 0.3s, width 0.3s; }
+.quote__dots button[aria-current='true'] span { background: var(--magenta); width: 40px; }
+
+/* ============ Genres ============ */
+.genres { position: relative; display: grid; gap: 2.5rem; }
+@media (min-width: 900px) { .genres { grid-template-columns: 1.2fr 1fr; align-items: center; } }
+.genre-list { border-top: 1px solid var(--line); }
+.genre-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--line); text-align: left; font: 900 clamp(1.8rem, 5.5vw, 3.6rem)/1 var(--font-display); text-transform: uppercase; letter-spacing: -0.02em; color: var(--text-faint); transition: color 0.3s, padding 0.4s var(--ease); }
+.genre-btn small { font: 700 0.65rem/1 var(--font-display); letter-spacing: 0.2em; color: var(--magenta); opacity: 0; transition: opacity 0.3s; }
+.genre-btn.is-active { color: var(--text); padding-left: 0.75rem; }
+.genre-btn.is-active small { opacity: 1; }
+.genre-panel { position: relative; border-radius: var(--radius); border: 1px solid var(--line-strong); padding: clamp(1.75rem, 4vw, 3rem); min-height: 280px; display: grid; align-content: end; gap: 1rem; overflow: hidden; background: linear-gradient(160deg, var(--plum), var(--bg-void)); }
+.genre-panel__ghost { position: absolute; top: 1rem; left: 1rem; right: 1rem; font: 900 clamp(4rem, 12vw, 8rem)/0.85 var(--font-display); text-transform: uppercase; color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--magenta) 40%, transparent); letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.genre-panel__line { font: italic 500 clamp(1.4rem, 3vw, 2rem)/1.15 var(--font-display); text-transform: uppercase; position: relative; }
+
+/* ============ Facts strip ============ */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+@media (min-width: 900px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+.fact { padding: clamp(1.5rem, 3vw, 2.5rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 0.6rem; align-content: start; }
+.fact__num { font: 900 clamp(2.6rem, 7vw, 5rem)/0.9 var(--font-display); letter-spacing: -0.03em; }
+.fact__num small { font-size: 0.45em; color: var(--magenta); }
+.fact__label { font: 700 0.7rem/1.4 var(--font-display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+
+/* ============ Feature split (image + text) ============ */
+.feature { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+@media (min-width: 900px) { .feature { grid-template-columns: 1.1fr 1fr; } .feature--flip > :first-child { order: 2; } }
+.frame { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-strong); }
+.frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+.frame--tall img { aspect-ratio: 4 / 5; }
+.frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(200deg, transparent 50%, color-mix(in srgb, var(--magenta) 22%, transparent)); mix-blend-mode: screen; pointer-events: none; }
+.frame__cap { position: absolute; left: 1rem; bottom: 1rem; z-index: 2; }
+.wall-mark { font: 900 clamp(6rem, 22vw, 15rem)/0.8 var(--font-display); letter-spacing: 0.04em; color: transparent; -webkit-text-stroke: 2px var(--magenta); filter: drop-shadow(0 0 18px var(--magenta-glow)); }
+.bullets { display: grid; gap: 0.85rem; }
+.bullets li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.75rem; color: var(--text-dim); }
+.bullets li svg { color: var(--magenta); margin-top: 0.3rem; }
+
+/* ============ Page hero ============ */
+.page-hero { position: relative; min-height: 78svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding-top: calc(var(--header-h) + 3rem); }
+.page-hero--short { min-height: 0; padding-bottom: 0; }
+.page-hero--book { min-height: 62svh; }
+.page-hero--book .page-hero__media { opacity: 0.55; }
+.page-hero__media { position: absolute; inset: 0; z-index: -2; }
+.page-hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.page-hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--bg-void) 65%, transparent), color-mix(in srgb, var(--bg-void) 35%, transparent) 35%, var(--bg-void) 96%), linear-gradient(90deg, color-mix(in srgb, var(--bg-void) 70%, transparent), transparent 70%); }
+.page-hero__inner { padding-bottom: clamp(3rem, 7vw, 5rem); display: grid; gap: 1.5rem; }
+.crumbs { display: flex; gap: 0.5rem; font: 700 0.68rem/1 var(--font-display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-faint); }
+.crumbs a:hover { color: var(--text); }
+
+/* ============ Process ============ */
+.process { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+@media (min-width: 900px) { .process { grid-template-columns: repeat(4, 1fr); } }
+.process__step { background: var(--bg-void); padding: clamp(1.5rem, 3vw, 2.25rem); display: grid; gap: 0.9rem; align-content: start; position: relative; transition: background-color 0.4s; }
+.process__step:hover { background: var(--bg-deep); }
+.process__num { font: 900 3rem/1 var(--font-display); color: var(--magenta); letter-spacing: -0.03em; }
+.process__title { font: 800 1.05rem/1.2 var(--font-display); text-transform: uppercase; }
+
+/* Prep checklist */
+.checklist { display: grid; gap: 0.6rem; }
+@media (min-width: 900px) { .checklist { grid-template-columns: 1fr 1fr; } }
+.check { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s; }
+.check:hover { border-color: var(--line-strong); }
+.check input { position: absolute; opacity: 0; pointer-events: none; }
+.check__box { width: 24px; height: 24px; border-radius: 6px; border: 1.5px solid var(--line-strong); display: grid; place-items: center; flex-shrink: 0; color: transparent; transition: background-color 0.2s, border-color 0.2s, color 0.2s; }
+.check input:checked + .check__box { background: var(--magenta); border-color: var(--magenta); color: var(--bg-void); }
+.check input:focus-visible + .check__box { outline: 2px solid var(--magenta); outline-offset: 3px; }
+.check.is-done { border-color: color-mix(in srgb, var(--magenta) 40%, transparent); background: color-mix(in srgb, var(--magenta) 6%, transparent); }
+.check.is-done .check__text { color: var(--text-dim); text-decoration: line-through; text-decoration-color: var(--magenta); }
+.progress-line { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.progress-line span { display: block; height: 100%; background: var(--magenta); transition: width 0.5s var(--ease); }

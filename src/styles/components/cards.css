@@ -1,0 +1,28 @@
+/* Cards */
+.cards { display: grid; gap: 1rem; }
+@media (min-width: 900px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+.card { border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.25rem); display: grid; gap: 1rem; align-content: start; background: linear-gradient(180deg, color-mix(in srgb, var(--bg-deep) 80%, transparent), var(--bg-void)); transition: border-color 0.3s, transform 0.5s var(--ease); }
+.card:hover { border-color: color-mix(in srgb, var(--magenta) 50%, transparent); transform: translateY(-4px); }
+.card__title { font: 900 1.4rem/1.05 var(--font-display); text-transform: uppercase; }
+
+.code-list { display: grid; border-top: 1px solid var(--line); }
+.code-list li { display: grid; gap: 0.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 900px) { .code-list li { grid-template-columns: 4rem 1fr 1.3fr; gap: 2rem; align-items: baseline; } }
+.code-list__n { font: 700 0.75rem/1 var(--font-display); color: var(--magenta); letter-spacing: 0.1em; }
+.code-list__k { font: 900 clamp(1.3rem, 2.6vw, 1.9rem)/1.05 var(--font-display); text-transform: uppercase; }
+
+/* FAQ accordion */
+.faq { border-top: 1px solid var(--line); }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.5rem 0; text-align: left; font: 800 clamp(1.05rem, 2.2vw, 1.45rem)/1.25 var(--font-display); text-transform: uppercase; }
+.faq__q:hover { color: var(--text-soft); }
+.faq__icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; flex-shrink: 0; transition: transform 0.4s var(--ease), background-color 0.3s, color 0.3s; }
+.faq__q[aria-expanded='true'] .faq__icon { transform: rotate(45deg); background: var(--magenta); color: var(--bg-void); border-color: var(--magenta); }
+.faq__a { overflow: hidden; }
+.faq__a p { padding-bottom: 1.5rem; color: var(--text-dim); max-width: 60ch; font-size: 1.05rem; }
+
+/* CTA band */
+.cta { position: relative; overflow: hidden; isolation: isolate; text-align: center; }
+.cta__glow { position: absolute; z-index: -1; left: 50%; top: 60%; width: 80vmax; height: 80vmax; translate: -50% -50%; background: radial-gradient(circle, color-mix(in srgb, var(--magenta) 22%, transparent), color-mix(in srgb, var(--violet) 10%, transparent) 35%, transparent 60%); pointer-events: none; }
+.cta__inner { display: grid; gap: 2rem; justify-items: center; }
+.cta__title { max-width: 16ch; }

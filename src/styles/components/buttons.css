@@ -1,0 +1,50 @@
+/* ============ Buttons ============ */
+.btn {
+  --h: 3.25rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;
+  min-height: var(--h); padding: 0 1.6rem; border-radius: 999px;
+  font: 800 0.78rem/1 var(--font-display); letter-spacing: 0.14em; text-transform: uppercase;
+  transition: transform 0.35s var(--ease), background-color 0.25s, color 0.25s, box-shadow 0.35s, border-color 0.25s;
+  white-space: nowrap;
+}
+.btn svg { transition: transform 0.35s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+.btn--primary { background: var(--magenta); color: var(--bg-void); box-shadow: 0 0 0 0 var(--magenta-glow); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -6px var(--magenta-glow); }
+.btn--ghost { border: 1.5px solid var(--magenta); color: var(--text); background: color-mix(in srgb, var(--bg-void) 40%, transparent); }
+.btn--ghost:hover { background: color-mix(in srgb, var(--magenta) 14%, transparent); }
+.btn--sm { --h: 2.6rem; padding: 0 1.2rem; font-size: 0.7rem; }
+.btn--block { width: 100%; }
+.btn:disabled { opacity: 0.55; cursor: progress; transform: none; }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font: 700 0.75rem/1 var(--font-display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text);
+  padding-block: 0.5rem; border-bottom: 1.5px solid var(--magenta);
+}
+.link-arrow svg { transition: transform 0.35s var(--ease); color: var(--magenta); }
+.link-arrow:hover svg { transform: translate(3px, -3px); }
+
+/* Tags */
+.tag {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font: 800 0.78rem/1 var(--font-display); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bg-void); background: var(--magenta-mid); padding: 0.6rem 1rem 0.55rem;
+  clip-path: polygon(2% 8%, 12% 0, 40% 6%, 70% 0, 98% 6%, 100% 50%, 97% 94%, 70% 100%, 38% 93%, 10% 100%, 0 88%, 1% 45%);
+}
+.tag--ghost { background: none; color: var(--text); border: 1px solid var(--line-strong); clip-path: none; border-radius: 999px; font-weight: 700; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.6rem; padding: 0 1.1rem; border-radius: 999px;
+  border: 1px solid var(--line-strong); font: 700 0.75rem/1 var(--font-display); letter-spacing: 0.12em; text-transform: uppercase;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+.chip:hover { border-color: var(--magenta); }
+.chip[aria-pressed='true'], .chip.is-active { background: var(--magenta); border-color: var(--magenta); color: var(--bg-void); }
+
+/* Outline tip box */
+.tip {
+  position: relative; border: 1px solid var(--magenta); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--plum) 70%, transparent);
+  padding: clamp(1.5rem, 3vw, 2.25rem); display: grid; gap: 0.75rem;
+}
+.tip__icon { width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--magenta); color: var(--magenta); }
+.tip__title { font: 900 1.4rem/1.1 var(--font-display); text-transform: uppercase; }

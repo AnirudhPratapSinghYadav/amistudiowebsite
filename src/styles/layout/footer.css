@@ -1,0 +1,24 @@
+/* ============ Footer ============ */
+.footer { position: relative; border-top: 1px solid var(--line); overflow: hidden; background: radial-gradient(90% 60% at 50% 110%, var(--plum), var(--bg-void) 70%); }
+.footer__big { padding-block: clamp(4rem, 8vw, 6rem) 2.5rem; display: grid; gap: 3rem; align-items: end; }
+@media (min-width: 900px) { .footer__big { grid-template-columns: 1fr 1fr; } }
+.footer__cta { display: grid; gap: 1.5rem; justify-items: start; }
+@media (min-width: 900px) { .footer__cta { justify-items: end; text-align: right; } }
+.footer__logo { --logo-h: clamp(110px, 22vw, 150px) !important; align-self: flex-start; }
+.footer__tag { font: 800 clamp(0.8rem, 1.6vw, 1rem)/1 var(--font-display); letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; }
+.footer__tag i { color: var(--magenta); font-style: normal; }
+.footer__grid { display: grid; gap: 2.5rem; grid-template-columns: repeat(2, 1fr); padding-block: 2.5rem; border-top: 1px solid var(--line); }
+@media (min-width: 900px) { .footer__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1200px) { .footer__grid { grid-template-columns: 1.3fr 0.8fr 1fr 1fr 1.3fr; } }
+.footer__col h2 { font: 700 0.7rem/1 var(--font-display); letter-spacing: 0.28em; text-transform: uppercase; color: var(--magenta); margin-bottom: 1.25rem; }
+.footer__col ul { display: grid; gap: 0.7rem; }
+.footer__col a, .footer__col li { color: var(--text-dim); font-size: 0.95rem; transition: color 0.2s; }
+.footer__col a:hover { color: var(--text); }
+.footer__intro { grid-column: 1 / -1; max-width: 40ch; color: var(--text-dim); align-content: start; }
+@media (min-width: 1200px) { .footer__intro { grid-column: auto; } }
+.footer__icon-link { display: inline-flex; align-items: center; gap: 0.6rem; overflow-wrap: anywhere; }
+.footer__icon-link svg { flex-shrink: 0; color: var(--magenta); }
+.soon { font: 700 0.6rem/1 var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); border: 1px solid var(--line); padding: 0.25rem 0.45rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+.footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-block: 1.5rem 2rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--text-faint); }
+.footer__bottom a:hover { color: var(--text); }
+.footer__watermark { position: absolute; right: -2vw; bottom: -3vw; font: 900 clamp(6rem, 22vw, 20rem)/0.8 var(--font-display); color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--text) 6%, transparent); pointer-events: none; user-select: none; letter-spacing: -0.04em; }
