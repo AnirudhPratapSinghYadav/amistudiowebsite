@@ -1,0 +1,19 @@
+{
+  "_source": "WAV files the client sent on 9 Oct 2026 (assets/client). Durations from ffprobe. 'Mysterious' carries the embedded title 'Mysterious - ProdAMI'; 'Rolling A Dice' has no credit tag, so no credit line is shown for it until the client confirms one.",
+  "beats": [
+    {
+      "id": "rolling-a-dice",
+      "title": "Rolling A Dice",
+      "file": "Rolling A Dice BEAT .wav",
+      "credit": "",
+      "durationSec": 46.5
+    },
+    {
+      "id": "mysterious",
+      "title": "Mysterious",
+      "file": "Mysterious.wav",
+      "credit": "Prod. AMI",
+      "durationSec": 44.0
+    }
+  ]
+}

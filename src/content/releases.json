@@ -1,0 +1,132 @@
+{
+  "_source": "linktr.ee/iamimusic05, cross-checked against open.spotify.com/embed and youtube.com/oembed on 2026-10-09. Tracking params (si, utm) removed from links.",
+  "artist": {
+    "name": "AMI",
+    "_profiles": "Artist profile links live in src/config/identity.json (socials).",
+    "portrait": "https://ugc.production.linktr.ee/c0f2fb7c-59b7-4713-b7fa-d94f3be354c7_IMG-2316.jpeg"
+  },
+  "releases": [
+    {
+      "id": "flowbug",
+      "title": "Flowbug",
+      "artists": ["AMI"],
+      "date": "2026-09-24",
+      "durationMs": 103000,
+      "explicit": true,
+      "video": "Official Music Video",
+      "youtubeId": "PeLBHp5hIT8",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b27305e32cec6915dd44a52f661f",
+      "previewSrc": "https://p.scdn.co/mp3-preview/53b512881e3dafca04e27b2b7d955465dfa536ee",
+      "links": {
+        "spotify": "https://open.spotify.com/track/3I1YLdDoSWoZsOQcuZLTXN",
+        "youtube": "https://youtu.be/PeLBHp5hIT8"
+      }
+    },
+    {
+      "id": "laal-pari",
+      "title": "Laal Pari",
+      "artists": ["AMI"],
+      "date": "2026-09-10",
+      "durationMs": 137624,
+      "explicit": false,
+      "video": "Official Visualizer",
+      "youtubeId": "lT77uWiprUQ",
+      "coverSrc": "https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b2732e212db43f4a2631a3888ab4",
+      "previewSrc": "https://p.scdn.co/mp3-preview/753d25ade27a2d0ae6be73b32ba6bd7cf45a08f0",
+      "links": {
+        "spotify": "https://open.spotify.com/track/7eHzwfpw1Zi030fdijdqNc",
+        "youtube": "https://youtu.be/lT77uWiprUQ"
+      }
+    },
+    {
+      "id": "enna-sohna",
+      "title": "Enna Sohna",
+      "artists": ["AMI"],
+      "date": "2026-08-27",
+      "durationMs": 157000,
+      "explicit": false,
+      "video": "Official Music Video",
+      "youtubeId": "JNd5MY_iSEE",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273ef5ccfa18a7b21cd9b099fbb",
+      "previewSrc": "https://p.scdn.co/mp3-preview/57959c3bc6e7afb476229016bcb2701d4053994a",
+      "links": {
+        "spotify": "https://open.spotify.com/track/2gZTP0nftSDBHEgsiaFK8G",
+        "youtube": "https://youtu.be/JNd5MY_iSEE"
+      }
+    },
+    {
+      "id": "mi-amor",
+      "title": "Mi Amor",
+      "artists": ["AMI"],
+      "date": "2024-12-05",
+      "durationMs": 118000,
+      "explicit": false,
+      "video": "Official Music Video",
+      "youtubeId": "sKgdZo6hnlo",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b27344576236367483ebabda56ce",
+      "previewSrc": "https://p.scdn.co/mp3-preview/5cd99c4627f6369307c80fde2fb643857a4707d5",
+      "links": {
+        "spotify": "https://open.spotify.com/track/3f5AcJAfHQtAmqmTcIYAQa",
+        "youtube": "https://youtu.be/sKgdZo6hnlo",
+        "appleMusic": "https://music.apple.com/us/album/mi-amor/1783196760?i=1783196761",
+        "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_ln5oA2JhtFptH9gcvpI6EBYFH-5mCY-M8"
+      }
+    },
+    {
+      "id": "barood",
+      "title": "Barood",
+      "artists": ["AMI", "Nishan Sandhu"],
+      "date": "2024-11-14",
+      "durationMs": 127874,
+      "explicit": true,
+      "video": "Official Music Video",
+      "youtubeId": "bw_GbMEAqWE",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273260bc23b066a8ecb7eb86da5",
+      "previewSrc": "https://p.scdn.co/mp3-preview/ab9e2b8b9885b17e4b36fb4c2690b362f693f495",
+      "links": {
+        "spotify": "https://open.spotify.com/track/0kI54msYernXUqz40Xlf8n",
+        "youtube": "https://youtu.be/bw_GbMEAqWE",
+        "appleMusic": "https://music.apple.com/us/album/barood-feat-nishan-sandhu/1777290632?i=1777290633"
+      }
+    },
+    {
+      "id": "memories",
+      "title": "Memories",
+      "artists": ["AMI"],
+      "date": "2024-10-25",
+      "durationMs": 145250,
+      "explicit": false,
+      "video": "Official Music Video",
+      "youtubeId": "s2o0UHLu3JQ",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273cafa09d0bbf6406538b880b4",
+      "previewSrc": "https://p.scdn.co/mp3-preview/f805f00c55eca7a4b2e0801182695688dd35a5d7",
+      "links": {
+        "spotify": "https://open.spotify.com/track/2CZ7kPzXe7W7LDkAOYnKUr",
+        "youtube": "https://youtu.be/s2o0UHLu3JQ",
+        "appleMusic": "https://music.apple.com/us/album/memories-single/1774509046",
+        "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_knUKPoBfLRqkcRMXnZowMfAPvjOseTpQ0",
+        "tidal": "https://tidal.com/browse/track/393565636",
+        "soundcloud": "https://soundcloud.com/ami-sharma-52920892/memories"
+      }
+    },
+    {
+      "id": "forever",
+      "title": "FOREVER",
+      "artists": ["AMI"],
+      "date": "2024-09-27",
+      "durationMs": 195200,
+      "explicit": false,
+      "video": "Official Music Video",
+      "youtubeId": "JH-t3YUermc",
+      "coverSrc": "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273e58784fbd423bead877438e0",
+      "previewSrc": "https://p.scdn.co/mp3-preview/e37e1f14f963bfc6c9a546373ba9f3d90e4d4ccd",
+      "links": {
+        "spotify": "https://open.spotify.com/track/7iDXLvBFnb0ZLDiHN1Thfe",
+        "youtube": "https://youtu.be/JH-t3YUermc",
+        "appleMusic": "https://music.apple.com/ca/album/forever-single/1765434901",
+        "youtubeMusic": "https://music.youtube.com/watch?v=kdtlOD0OE5E",
+        "tidal": "https://tidal.com/track/383935782"
+      }
+    }
+  ]
+}
