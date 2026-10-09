@@ -8,7 +8,7 @@
   "roles": ["Music producer", "Songwriter", "Artist"],
   "tagline": ["Record", "Produce", "Create"],
   "years": "4+",
-  "domain": "",
+  "domain": "amistudiowebsite.vercel.app",
   "rates": { "currency": "$", "session": 60, "vocal": 40 },
   "contact": {
     "email": "iamimusic05@gmail.com",
