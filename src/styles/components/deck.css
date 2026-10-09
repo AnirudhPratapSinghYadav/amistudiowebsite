@@ -1,0 +1,72 @@
+/* The Deck: turntable player for the client's beats (components/Deck.jsx).
+   --p is playback progress (0 to 1), --bass is the live low-end level (0 to 1). */
+.deck { --p: 0; --bass: 0; position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(4rem, 9vw, 7.5rem); background: var(--bg-void); }
+.deck__room { position: absolute; inset: 0; z-index: -1; }
+.deck__room picture, .deck__room img { width: 100%; height: 100%; object-fit: cover; }
+.deck__room img { opacity: calc(0.14 + var(--bass) * 0.2); filter: saturate(1.25) blur(2px); }
+.deck__room::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 28% 55%, color-mix(in srgb, var(--bg-void) 30%, transparent), var(--bg-void) 78%); }
+
+.deck__inner { display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
+.deck__head { max-width: 46rem; display: grid; gap: 1rem; }
+.deck__unit { display: grid; gap: clamp(2.25rem, 5vw, 4.5rem); align-items: center; }
+@media (min-width: 900px) { .deck__unit { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } }
+
+/* Turntable */
+.deck__table { position: relative; width: min(100%, 540px); aspect-ratio: 1; margin-inline: auto; border-radius: 28px; border: 1px solid var(--line-strong); background: linear-gradient(150deg, color-mix(in srgb, var(--plum) 75%, var(--bg-void)), var(--bg-void) 70%); box-shadow: inset 0 1px 0 var(--line), 0 40px 90px -50px var(--magenta-glow); }
+.deck__table::before { content: ''; position: absolute; inset: -8%; z-index: -1; border-radius: 50%; background: radial-gradient(circle, var(--magenta-glow), transparent 62%); opacity: calc(0.25 + var(--bass) * 1.1); pointer-events: none; }
+.deck__table::after { content: ''; position: absolute; inset: 13%; z-index: 2; border-radius: 50%; pointer-events: none; background: conic-gradient(from 210deg, transparent 0 6%, color-mix(in srgb, var(--text) 13%, transparent) 12%, transparent 20% 56%, color-mix(in srgb, var(--text) 8%, transparent) 62%, transparent 70%); }
+.deck__ring { position: absolute; inset: 4%; width: 92%; height: 92%; z-index: 0; color: var(--magenta); }
+.deck__platter { position: absolute; inset: 13%; z-index: 1; border-radius: 50%; will-change: transform; }
+.deck__record { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, transparent 0 31%, color-mix(in srgb, var(--text) 9%, var(--bg-void)) 31.5% 32.5%, transparent 33%), repeating-radial-gradient(circle, var(--bg-void) 0 2px, color-mix(in srgb, var(--text) 5%, var(--bg-void)) 2px 3px); box-shadow: 0 0 0 5px color-mix(in srgb, var(--text) 7%, var(--bg-void)), 0 24px 40px -14px var(--bg-void); }
+.deck__label { position: absolute; inset: 33%; border-radius: 50%; container-type: inline-size; text-align: center; background: radial-gradient(circle at 35% 30%, var(--magenta), var(--magenta-deep) 60%, var(--crown)); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--bg-void) 25%, transparent); }
+/* Logo above the spindle hole, title and credit below it, like a pressed label. */
+.deck__label img { position: absolute; left: 50%; top: 12%; translate: -50% 0; width: 30%; height: auto; }
+.deck__label b { position: absolute; left: 7%; right: 7%; top: 61%; font: 900 7.5cqw/1 var(--font-display); text-transform: uppercase; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck__label small { position: absolute; left: 10%; right: 10%; top: 76%; font: 700 4.6cqw/1 var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg-deep); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck__spindle { position: absolute; left: 50%; top: 50%; z-index: 3; width: 3%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: var(--text-soft); box-shadow: 0 0 0 3px var(--bg-void); }
+
+/* Tonearm: hangs off the record at rest, swings in on play, tracks inward with --p. */
+.deck__pivot { position: absolute; right: 6.5%; top: 6.5%; z-index: 5; width: 12%; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--line-strong); background: radial-gradient(circle, var(--text-soft) 0 20%, var(--plum) 23% 58%, var(--bg-deep) 61%); }
+.deck__arm { position: absolute; right: 12.5%; top: 12.5%; z-index: 4; width: clamp(3px, 0.9%, 5px); height: 58%; translate: 50% 0; transform-origin: 50% 0; rotate: -5deg; transition: rotate 0.9s var(--ease); }
+.deck.is-playing .deck__arm { rotate: calc(8deg + var(--p) * 12deg); }
+.deck__arm-rod { position: absolute; inset: 0; border-radius: 3px; background: linear-gradient(90deg, var(--text-dim), var(--text-soft), var(--text-dim)); box-shadow: 4px 6px 10px var(--bg-void); }
+.deck__arm-head { position: absolute; left: 50%; bottom: -5%; width: clamp(10px, 2.6vw, 16px); height: clamp(16px, 4vw, 26px); translate: -50% 0; rotate: 22deg; border-radius: 3px; background: var(--text-soft); box-shadow: 0 0 0 2px var(--bg-void); }
+.deck.is-playing .deck__arm-head { box-shadow: 0 0 0 2px var(--bg-void), 0 0 14px var(--magenta-glow); }
+
+/* Panel */
+.deck__panel { display: grid; gap: 1.15rem; min-width: 0; }
+.deck__status { display: flex; align-items: center; gap: 0.6rem; font: 700 0.66rem/1 var(--font-display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); }
+.deck__led { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); flex-shrink: 0; }
+.deck.is-playing .deck__led { background: var(--magenta); box-shadow: 0 0 10px var(--magenta); animation: deck-blink 1.2s steps(2, jump-none) infinite; }
+.deck__title { font: 900 clamp(2.3rem, 7vw, 4.6rem)/0.92 var(--font-display); text-transform: uppercase; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.deck__title span { display: inline-block; animation: deck-type 0.7s steps(var(--n, 12)) both; }
+.deck__credit { font: 700 0.78rem/1 var(--font-display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--magenta); }
+.deck__scrub { display: grid; gap: 0.5rem; padding-block: 0.3rem; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+.deck__scrub[aria-disabled='true'] { cursor: default; }
+.deck__scrub .wave-wrap { height: 56px; }
+.deck__time { justify-self: end; font: 600 0.75rem/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--text-faint); }
+.deck__transport { display: flex; align-items: center; gap: 1rem; }
+.deck__play { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: var(--magenta); color: var(--bg-void); transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+.deck__play:hover { transform: scale(1.05); box-shadow: 0 0 0 10px color-mix(in srgb, var(--magenta) 18%, transparent); }
+.deck:not(.is-playing) .deck__play svg { margin-left: 3px; }
+.deck__skip { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); color: var(--text); transition: border-color 0.2s, color 0.2s; }
+.deck__skip:hover { border-color: var(--magenta); color: var(--magenta); }
+.deck__crate { display: grid; gap: 0.5rem; }
+.deck__slot { width: 100%; min-height: 48px; display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 0.9rem 1.1rem; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg-void) 55%, transparent); text-align: left; color: var(--text); transition: border-color 0.2s, background-color 0.2s; }
+.deck__slot:hover { border-color: var(--line-strong); }
+.deck__slot.is-on { border-color: var(--magenta); background: color-mix(in srgb, var(--magenta) 10%, var(--bg-void)); }
+.deck__slot-num { font: 800 0.7rem/1 var(--font-display); letter-spacing: 0.1em; color: var(--magenta); }
+.deck__slot-title { font: 800 0.95rem/1.1 var(--font-display); text-transform: uppercase; }
+.deck__slot-dur { font: 600 0.75rem/1 var(--font-body); font-variant-numeric: tabular-nums; color: var(--text-faint); }
+.deck__ask { justify-self: start; max-width: 100%; white-space: normal; text-align: left; }
+.deck__keys { font-size: 0.78rem; }
+@media (hover: none) { .deck__keys { display: none; } }
+
+@keyframes deck-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes deck-blink { 50% { opacity: 0.35; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .deck__arm { transition: none; }
+  .deck__title span, .deck.is-playing .deck__led { animation: none; }
+  .deck__room img { opacity: 0.16; }
+}
