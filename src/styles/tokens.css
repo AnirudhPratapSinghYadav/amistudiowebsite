@@ -1,0 +1,33 @@
+/* Colors pixel-sampled from the client poster. No other colors are allowed.
+   Transparency is derived with color-mix() from these tokens only. */
+:root {
+  --bg-void: #040410;
+  --bg-deep: #150222;
+  --plum: #2E022C;
+  --violet: #842DB1;
+  --violet-bright: #9412B2;
+  --magenta: #FE05B2;
+  --magenta-mid: #F70198;
+  --magenta-deep: #F40E93;
+  --crown: #E9069C;
+  --neon-red-pink: #F50C70;
+  --text: #FFFFFF;
+  --text-soft: #FFD6F9;
+
+  --text-dim: color-mix(in srgb, var(--text) 72%, transparent);
+  --text-faint: color-mix(in srgb, var(--text) 48%, transparent);
+  --line: color-mix(in srgb, var(--text) 12%, transparent);
+  --line-strong: color-mix(in srgb, var(--text) 22%, transparent);
+  --magenta-glow: color-mix(in srgb, var(--magenta) 45%, transparent);
+  --violet-glow: color-mix(in srgb, var(--violet-bright) 40%, transparent);
+
+  --font-display: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-brush: 'Permanent Marker', 'Montserrat Variable', cursive;
+
+  --pad-x: clamp(1.25rem, 4vw, 3rem);
+  --max: 1280px;
+  --header-h: 72px;
+  --radius: 14px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

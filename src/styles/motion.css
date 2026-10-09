@@ -1,0 +1,7 @@
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .hero__media img { animation: none; transform: none; }
+  .marquee__track, .cover-wall__row { animation: none; }
+  .rec__dot { animation: none; }
+  .rel__disc, .spot-rel__disc { animation: none; }
+}
