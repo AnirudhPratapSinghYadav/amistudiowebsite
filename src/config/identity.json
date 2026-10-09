@@ -1,0 +1,36 @@
+{
+  "_source": "Client messages of 5 Oct and 9 Oct 2026, the logo, linktr.ee/iamimusic05 and the Instagram link supplied by the client on 9 Oct 2026. Every value here appears on the site; change it here and it changes everywhere, including index.html and site.webmanifest at build time.",
+  "name": "Oneness Production",
+  "shortName": "Oneness",
+  "descriptor": "Audio Production House",
+  "producer": "AMI",
+  "wallMark": "AMI",
+  "roles": ["Music producer", "Songwriter", "Artist"],
+  "tagline": ["Record", "Produce", "Create"],
+  "years": "4+",
+  "domain": "",
+  "rates": { "currency": "$", "session": 60, "vocal": 40 },
+  "contact": {
+    "email": "iamimusic05@gmail.com",
+    "whatsapp": "15874332555",
+    "whatsappDisplay": "+1 (587) 433-2555",
+    "address": {
+      "street": "356 Falmere Road NE",
+      "city": "Calgary",
+      "region": "Alberta",
+      "regionCode": "AB",
+      "country": "Canada",
+      "countryCode": "CA"
+    },
+    "hours": { "open": 8, "close": 22, "days": "Every day", "label": "8 am to 10 pm", "tz": "America/Edmonton" }
+  },
+  "socials": [
+    { "id": "instagram", "label": "Instagram", "handle": "@ami.a.official", "href": "https://www.instagram.com/ami.a.official/" },
+    { "id": "spotify", "label": "Spotify", "href": "https://open.spotify.com/artist/6Z5wwu6YqtMH9gaQZF6QiV" },
+    { "id": "appleMusic", "label": "Apple Music", "href": "https://music.apple.com/us/artist/ami/1765289275" },
+    { "id": "youtube", "label": "YouTube", "href": "https://www.youtube.com/@AMImusic05" },
+    { "id": "soundcloud", "label": "SoundCloud", "href": "https://soundcloud.com/ami-sharma-52920892" },
+    { "id": "linktree", "label": "Linktree", "href": "https://linktr.ee/iamimusic05" }
+  ],
+  "formEndpoint": ""
+}
