@@ -1,0 +1,26 @@
+/* ============ Visit / contact ============ */
+.open-now { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.7rem; font: 700 0.7rem/1.2 var(--font-display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); }
+.open-now__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; }
+.open-now.is-open { color: var(--text); }
+.open-now.is-open .open-now__dot { background: var(--magenta); box-shadow: 0 0 10px var(--magenta); animation: neon 3s ease-in-out infinite; }
+.open-now__time { color: var(--text-faint); font-weight: 600; letter-spacing: 0.1em; }
+.open-now--hero { justify-self: start; padding: 0.6rem 1rem; border-radius: 999px; border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--bg-void) 55%, transparent); }
+.hero__open { display: none; }
+@media (min-width: 640px) { .hero__open { display: inline-flex; } }
+.visit-grid { display: grid; gap: 1rem; }
+@media (min-width: 640px) { .visit-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .visit-grid { grid-template-columns: repeat(4, 1fr); } }
+.visit-card { align-content: start; }
+.visit-card .link-arrow { justify-self: start; margin-top: auto; }
+.visit-card__value { font: 800 1.05rem/1.35 var(--font-display); overflow-wrap: anywhere; }
+.week { display: grid; gap: 0.35rem; }
+.week li { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: center; padding: 0.55rem 0.75rem; border-radius: 8px; }
+.week li.is-today { background: color-mix(in srgb, var(--magenta) 12%, transparent); outline: 1px solid color-mix(in srgb, var(--magenta) 50%, transparent); }
+.week__d { font: 800 0.75rem/1 var(--font-display); letter-spacing: 0.16em; text-transform: uppercase; }
+.week__bar { position: relative; height: 6px; border-radius: 3px; background: var(--line); }
+.week__bar i { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--magenta); }
+.week li:not(.is-today) .week__bar i { background: color-mix(in srgb, var(--magenta) 55%, transparent); }
+.week__h { font-size: 0.82rem; color: var(--text-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.map-frame img { aspect-ratio: 4 / 5; filter: saturate(0.8) brightness(0.55); }
+.map-frame__card { position: absolute; z-index: 2; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; display: grid; gap: 0.9rem; justify-items: start; padding: 1.5rem; border-radius: 14px; border: 1px solid var(--magenta); background: color-mix(in srgb, var(--bg-void) 80%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.map-frame__addr { font: 900 1.4rem/1.15 var(--font-display); text-transform: uppercase; }

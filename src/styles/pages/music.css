@@ -1,0 +1,14 @@
+/* ============ Music page ============ */
+.page-hero--music { min-height: 86svh; }
+.cover-wall { position: absolute; inset: -20% -10%; z-index: -2; display: grid; gap: 1rem; align-content: center; rotate: -8deg; opacity: 0.4; }
+.cover-wall__row { display: flex; gap: 1rem; width: max-content; animation: marquee 60s linear infinite; }
+.cover-wall__row--1 { animation-direction: reverse; animation-duration: 75s; }
+.cover-wall__row--2 { animation-duration: 90s; }
+.cover-wall img { width: clamp(120px, 16vw, 220px); aspect-ratio: 1; border-radius: 8px; object-fit: cover; }
+.page-hero--music::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, color-mix(in srgb, var(--bg-void) 70%, transparent), color-mix(in srgb, var(--bg-void) 55%, transparent) 40%, var(--bg-void) 95%), radial-gradient(60% 50% at 20% 70%, color-mix(in srgb, var(--bg-void) 70%, transparent), transparent); }
+.music-hero__sound { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.stat-strip { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+@media (min-width: 900px) { .stat-strip { grid-template-columns: repeat(4, 1fr); } }
+.stat-strip > div { display: flex; flex-direction: column-reverse; gap: 0.6rem; padding: clamp(1.25rem, 3vw, 2rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat-strip dt { font: 700 0.7rem/1.4 var(--font-display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+.stat-strip dd { font: 900 clamp(2.4rem, 6vw, 4rem)/0.9 var(--font-display); letter-spacing: -0.03em; }
