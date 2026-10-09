@@ -61,7 +61,9 @@ function routeHead(route) {
     `<meta property="og:title" content="${t}" />`,
     `<meta property="og:description" content="${d}" />`,
   ];
-  if (origin) {
+  if (m.noindex) {
+    lines.push(`<meta name="robots" content="noindex" />`);
+  } else if (origin) {
     const url = esc(abs(route === '/' ? '/' : route));
     lines.push(`<link rel="canonical" href="${url}" />`, `<meta property="og:url" content="${url}" />`);
   }
@@ -188,6 +190,8 @@ export default function identity() {
           const source = html.replace(home, routeHead(route)).replace('</head>', `  ${preloads}\n  </head>`);
           this.emitFile({ type: 'asset', fileName: `${route.slice(1)}.html`, source });
         }
+        // Hosts serve 404.html with a real 404 status; the app inside it renders the NotFound page.
+        this.emitFile({ type: 'asset', fileName: '404.html', source: html.replace(home, routeHead('/404')) });
       },
     },
   };
