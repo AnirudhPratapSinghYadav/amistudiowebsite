@@ -77,7 +77,7 @@ export function SoundToggle({ className = '' }) {
       className={`sound-btn${s.sound ? ' is-on' : ''} ${className}`}
       onClick={() => audio.toggleSound()}
       aria-pressed={s.sound}
-      title={s.sound ? 'Sound on. Hover a release to hear it.' : `Turn sound on: ${(findBeat(s.beat) || BEATS[0]).title}`}
+      title={s.sound ? 'Sound on. Press to turn it off.' : `Turn sound on: ${(findBeat(s.beat) || BEATS[0]).title}`}
     >
       <Levels bars={4} active={s.playing} />
       <span className="sound-btn__txt">
@@ -105,7 +105,7 @@ export function BeatPlayer({ className = '', label = 'Press play' }) {
       </button>
       <div className="beat__body">
         <div className="beat__meta">
-          <span className="beat__kind">{active ? 'Now playing' : s.current && s.playing ? 'Paused for a preview' : label}</span>
+          <span className="beat__kind">{active ? 'Now playing' : label}</span>
           <strong className="beat__title" key={beat.id}>
             {beat.title}
           </strong>
@@ -116,9 +116,10 @@ export function BeatPlayer({ className = '', label = 'Press play' }) {
         <Wave peaks={beat.wave} />
       </div>
       {BEATS.length > 1 ? (
-        <button type="button" className="beat__next" onClick={() => audio.nextBeat(1)} aria-label={`Switch beat. Now on ${beat.title}, beat ${beat.num} of ${BEATS.length}`}>
+        <button type="button" className="beat__next" onClick={() => audio.nextBeat(1)}>
           <Icon name="skipNext" size={16} />
-          <span aria-hidden="true">
+          <span className="sr-only">Switch beat. Now on {beat.title}, beat </span>
+          <span>
             {beat.num}/{String(BEATS.length).padStart(2, '0')}
           </span>
         </button>

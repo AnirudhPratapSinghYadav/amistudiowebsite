@@ -67,7 +67,7 @@ export default function Studio() {
           <SectionHead num="02" kicker="Gallery" title={<span id="gallery-title">Lights <em>low.</em> Neon on.</span>} />
           <div className="gallery">
             {GALLERY.map((g, i) => (
-              <button key={g.slug} type="button" className="gallery__item" onClick={() => setShot(i)} aria-label={`Open photo ${i + 1}: ${g.alt}`}>
+              <button key={g.slug} type="button" className="gallery__item" onClick={() => setShot(i)} aria-label={`Open photo ${String(i + 1).padStart(2, '0')}: ${g.alt}`}>
                 <Picture slug={g.slug} alt="" sizes="(min-width: 900px) 50vw, 50vw" />
                 <span className="work__pill">{String(i + 1).padStart(2, '0')}</span>
               </button>

@@ -39,8 +39,9 @@ const IG = BRAND.social.instagram;
 export function InstagramButton({ className = 'btn btn--ghost', children }) {
   if (!IG) return null;
   return (
-    <a className={className} href={IG.href} {...ext} aria-label={`${BRAND.producer} on Instagram, ${IG.handle}`}>
+    <a className={className} href={IG.href} {...ext}>
       <BrandIcon name="instagram" size={18} /> {children || `Follow ${IG.handle}`}
+      <span className="sr-only">, {BRAND.producer} on Instagram</span>
     </a>
   );
 }
