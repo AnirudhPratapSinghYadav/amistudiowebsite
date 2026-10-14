@@ -29,7 +29,7 @@ Linktree. He wanted:
 | **Booking flow** | Service, hours, genre and idea in, a ticket number and live price out. Opens WhatsApp or email with the full message prefilled. Input sanitising, a honeypot, a rate limit and a strict allow-list on query parameters |
 | **Context-aware CTAs** | Every button on the site carries its own prefilled WhatsApp or email text, so the studio knows where the enquiry came from |
 | **Nine pages** | Home, Services, Music, Studio, About, Contact, FAQ, Book, Privacy, plus a 404. Lazy-loaded routes with a "tape stop" page transition and an error boundary that recovers from a failed chunk |
-| **Releases** | Seven releases with covers, 30 second previews and links to Spotify, Apple Music, YouTube and SoundCloud, all from one JSON file |
+| **YouTube-first releases** | All seven songs on Home and Music. Each one leads with a big "Watch on YouTube" button; Spotify, Apple Music, TIDAL and SoundCloud sit underneath as small icons. No in-site previews and no release years, at the client's request. All from one JSON file |
 | **Single source of truth** | Name, rates, contact details, hours and socials live in one JSON file. A custom Vite plugin writes the page head, JSON-LD, web manifest, robots.txt, sitemap and one HTML file per route, so shared links preview the right page |
 | **Brand** | The client's logo icon rebuilt with a live "ONENESS PRODUCTION" wordmark; share image generated from the same font |
 | **Media pipeline** | Python and ffmpeg scripts turn the client's raw WAVs, phone photos and videos into responsive images, compressed clips, MP3s and waveform data |
@@ -107,8 +107,8 @@ the site ships the encoded MP3s in `public/audio/`. With ffmpeg on the PATH and 
 |---|---|
 | `python scripts/build_media.py` | Everything: photos, logos, wordmark, share image, studio clips, releases and beats |
 | `python scripts/build_media.py --brand` | Logos, wordmark PNGs and `og-image.jpg` only |
-| `python scripts/build_media.py --releases` | Release covers, previews, video stills, beats and waveforms |
-| `python scripts/fetch_releases.py` | Downloads covers and previews for anything new in `releases.json` |
+| `python scripts/build_media.py --releases` | Release covers, video stills, the beats and their waveforms |
+| `python scripts/fetch_releases.py` | Downloads the cover and YouTube still for anything new in `releases.json` |
 | `node scripts/brand_icons.mjs` | Regenerates `src/components/brandIcons.js` from simple-icons |
 
 To add a beat: drop the WAV in `assets/client/`, add a line to `src/content/beats.json`, run

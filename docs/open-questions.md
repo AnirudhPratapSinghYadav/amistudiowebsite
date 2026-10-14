@@ -38,6 +38,6 @@ The client-facing version of this list, in plain words, is `docs/client-needs.md
 - Whether the beats are for lease or showcase only.
 - Other profiles: TikTok, Facebook, Google Business Profile.
 - Official vector of the new "ONENESS PRODUCTION" wordmark.
-- Permission to self-host the release previews, covers and portrait (his own music and photo).
+- Permission to self-host the release covers, video stills and portrait (his own artwork and photo). Previews are gone.
 - Postal code (T3J 2Z4 in public records) and whether to show it.
 - Optional form endpoint (`formEndpoint` in `src/config/identity.json`). If set, add its origin to `connect-src` in `public/_headers` and `vercel.json`.

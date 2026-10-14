@@ -4,6 +4,12 @@ Only these may appear on the site. Anything else is a TODO.
 Single source in code: `src/config/identity.json` (identity, contact, socials), `src/content/releases.json`
 (releases and platform links), `src/content/beats.json` (beats).
 
+## From the client (14 Oct 2026, final changes before hosting)
+- Do not show the year of any song.
+- Songs must not be playable as previews on the site.
+- YouTube gets the most importance: a bigger YouTube button than anything else on each song.
+- All 7 songs on the home page (it showed 3).
+
 ## From the client (9 Oct 2026, second message)
 - Name: **Oneness Production** (singular), replacing "Oneness Records". Logo icon unchanged; the wordmark now reads "ONENESS PRODUCTION" with the tagline "Audio Production House".
 - Instagram: https://www.instagram.com/ami.a.official/ (`@ami.a.official`)

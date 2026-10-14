@@ -42,14 +42,14 @@ outlined in pink.
 
 13. **Logo with the new name.** The site rebuilds "ONENESS PRODUCTION" in the same font style next to
     his original icon. If he has an official vector (SVG, AI or PDF) of the new wordmark, send it.
-14. **Song previews and covers.** The music page plays 30-second previews and shows covers from his
-    released songs, stored on the site itself. Confirm he is fine with that (it is his own music).
+14. **Covers.** The site shows the covers and video stills of his released songs, stored on the site
+    itself. Song previews were removed on his request (14 Oct 2026); every song now opens on YouTube.
 15. **Photos.** Any newer studio or portrait photos he would like used.
 
 ## Socials and listings
 
-16. **Other profiles.** TikTok, Facebook, or a Google Business Profile? Instagram
-    (`@ami.a.official`), Spotify, Apple Music, YouTube, SoundCloud and Linktree are already linked.
+16. **Other profiles.** TikTok, Facebook, or a Google Business Profile? YouTube (listed first
+    everywhere), Instagram (`@ami.a.official`), Spotify, Apple Music, SoundCloud and Linktree are already linked.
 17. **Google Business Profile.** If he has one, send the link so the map button can point straight to it.
 18. **Postal code.** Public records list 356 Falmere Road NE as T3J 2Z4. Confirm, and say whether he
     wants the postal code shown.
