@@ -27,7 +27,6 @@ def get(url, dest):
 for rel in DATA["releases"]:
     rid = rel["id"]
     get(rel["coverSrc"], OUT / f"{rid}-cover.jpg")
-    get(rel["previewSrc"], OUT / f"{rid}-preview.mp3")
     yt = rel["youtubeId"]
     try:
         get(f"https://i.ytimg.com/vi/{yt}/maxresdefault.jpg", OUT / f"{rid}-video.jpg")

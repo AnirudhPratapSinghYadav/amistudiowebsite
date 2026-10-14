@@ -208,11 +208,11 @@ def peaks(path, bins):
 
 
 def releases():
+    """Covers and video stills for every release. No song audio: the client wants songs to play
+    on YouTube only, so the site ships no previews."""
     import json
     OUT_REL.mkdir(parents=True, exist_ok=True)
-    OUT_AUDIO.mkdir(parents=True, exist_ok=True)
     data = json.loads((ROOT / "src" / "content" / "releases.json").read_text(encoding="utf-8"))
-    wave = {}
     for rel in data["releases"]:
         rid = rel["id"]
         cover = Image.open(REL / f"{rid}-cover.jpg").convert("RGB")
@@ -226,19 +226,13 @@ def releases():
                 OUT_REL / f"{rid}-video-{w}.webp", "WEBP", quality=74, method=6
             )
 
-        # Spotify previews are already small 96 kbps MP3s. Strip tags, keep the audio untouched.
-        ff("-i", str(REL / f"{rid}-preview.mp3"), "-map_metadata", "-1", "-c:a", "copy",
-           str(OUT_AUDIO / f"{rid}-preview.mp3"))
-        wave[rid] = peaks(REL / f"{rid}-preview.mp3", 48)
-
     portrait = Image.open(REL / "artist-portrait.jpg").convert("RGB")
     for w in (480, 960):
         portrait.resize((w, w), Image.LANCZOS).save(OUT_IMG / f"artist-portrait-{w}.webp", "WEBP", quality=76, method=6)
     portrait.resize((960, 960), Image.LANCZOS).save(OUT_IMG / "artist-portrait-960.jpg", "JPEG", quality=80, optimize=True)
 
-    wave.update(beats())
-    (ROOT / "src" / "content" / "waveforms.json").write_text(json.dumps(wave), encoding="utf-8")
-    print("releases and audio")
+    (ROOT / "src" / "content" / "waveforms.json").write_text(json.dumps(beats()), encoding="utf-8")
+    print("releases and beats")
 
 
 def beats():

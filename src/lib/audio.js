@@ -1,14 +1,13 @@
-// One audio engine for the whole site. Two players: the beat deck (the client's beats, one
-// after another while "sound" is on) and release previews. A preview takes over from the
-// beat and hands back when it stops. Browsers only allow sound after a click or key press,
-// so hover playback is only allowed once the visitor has turned sound on themselves.
+// One audio engine for the whole site: the beat deck (the client's beats, one after another
+// while "sound" is on). Songs are not played here; they open on YouTube. Browsers only allow
+// sound after a click or key press, so nothing starts until the visitor asks for it.
 import { useSyncExternalStore } from 'react';
-import { BEATS, findBeat, findRelease, isBeat } from '../content/music';
+import { BEATS, findBeat, isBeat } from '../content/music';
 import { BRAND } from '../config/brand';
 
 const FADE_MS = 220;
 
-let state = { sound: false, current: null, playing: false, via: null, beat: BEATS[0].id };
+let state = { sound: false, current: null, playing: false, beat: BEATS[0].id };
 const subs = new Set();
 const emit = (patch) => {
   state = { ...state, ...patch };
@@ -16,11 +15,9 @@ const emit = (patch) => {
 };
 
 let beatEl = null;
-let prevEl = null;
 let ctx = null;
 let analyser = null;
 let bins = null;
-let handBack = false;
 let switchToken = 0;
 const gains = new WeakMap();
 
@@ -53,7 +50,6 @@ function ensureContext() {
   }
   if (ctx.state === 'suspended') ctx.resume().catch(() => {});
   connect(beatEl);
-  connect(prevEl);
 }
 
 /* Fade an element's level. Uses the gain node when wired, element volume otherwise. */
@@ -102,17 +98,7 @@ function beatPlayer() {
   return beatEl;
 }
 
-function previewPlayer() {
-  if (!prevEl) {
-    prevEl = new Audio();
-    prevEl.preload = 'none';
-    prevEl.addEventListener('ended', () => afterPreview());
-    connect(prevEl);
-  }
-  return prevEl;
-}
-
-function mediaSession(title, artist, art, withBeats) {
+function mediaSession(title, artist) {
   if (!('mediaSession' in navigator)) return;
   const ms = navigator.mediaSession;
   if (typeof window.MediaMetadata === 'function') {
@@ -120,7 +106,7 @@ function mediaSession(title, artist, art, withBeats) {
       title,
       artist,
       album: BRAND.name,
-      artwork: [{ src: art, sizes: art.includes('cover') ? '640x640' : '512x512', type: art.endsWith('.png') ? 'image/png' : 'image/jpeg' }],
+      artwork: [{ src: '/icon-512.png', sizes: '512x512', type: 'image/png' }],
     });
   }
   const set = (action, fn) => {
@@ -130,8 +116,8 @@ function mediaSession(title, artist, art, withBeats) {
       /* action not supported by this browser */
     }
   };
-  set('nexttrack', withBeats ? () => audio.nextBeat(1) : null);
-  set('previoustrack', withBeats ? () => audio.nextBeat(-1) : null);
+  set('nexttrack', () => audio.nextBeat(1));
+  set('previoustrack', () => audio.nextBeat(-1));
   set('pause', () => audio.stopAll());
   set('play', () => audio.playBeat());
 }
@@ -164,19 +150,8 @@ async function startBeat(id = state.beat) {
   setLevel(el, switching ? 0 : 0.85);
   play(el);
   if (switching) fade(el, 0.85);
-  mediaSession(b.title, b.credit || BRAND.producer, '/icon-512.png', true);
-  emit({ current: b.id, beat: b.id, playing: true, via: 'click' });
-}
-
-function afterPreview() {
-  prevEl?.pause();
-  if (handBack && state.sound) {
-    handBack = false;
-    startBeat();
-    return;
-  }
-  handBack = false;
-  emit({ current: null, playing: false, via: null });
+  mediaSession(b.title, b.credit || BRAND.producer);
+  emit({ current: b.id, beat: b.id, playing: true });
 }
 
 export const audio = {
@@ -195,17 +170,11 @@ export const audio = {
     beatPlayer();
     ensureContext();
     emit({ sound: true });
-    if (state.current && !isBeat(state.current) && state.playing) {
-      handBack = true;
-      return;
-    }
     startBeat();
   },
 
   /* Start a beat (the selected one by default). Click or key press only. */
   playBeat(id = state.beat) {
-    prevEl?.pause();
-    handBack = false;
     beatPlayer();
     ensureContext();
     emit({ sound: true });
@@ -228,62 +197,19 @@ export const audio = {
   stopAll() {
     switchToken += 1;
     beatEl?.pause();
-    prevEl?.pause();
-    handBack = false;
-    emit({ sound: false, current: null, playing: false, via: null });
+    emit({ sound: false, current: null, playing: false });
   },
 
-  /* Jump to a point (0 to 1) in whatever is playing. */
+  /* Jump to a point (0 to 1) in the playing beat. */
   seek(fraction) {
-    const el = isBeat(state.current) ? beatEl : prevEl;
+    const el = beatEl;
     if (!el || !state.playing || !Number.isFinite(el.duration)) return;
     el.currentTime = Math.min(Math.max(fraction, 0), 0.999) * el.duration;
   },
 
-  /* Preview of a release. `via: 'hover'` only works once sound is on. */
-  playPreview(id, via = 'click') {
-    const rel = findRelease(id);
-    if (!rel) return;
-    if (via === 'hover' && (!state.sound || (state.current === id && state.playing))) return;
-    switchToken += 1;
-    const el = previewPlayer();
-    if (via === 'click') ensureContext();
-    if (beatEl && !beatEl.paused) {
-      beatEl.pause();
-      handBack = true;
-    }
-    if (!el.src.endsWith(rel.preview)) el.src = rel.preview;
-    el.currentTime = 0;
-    setLevel(el, 1);
-    play(el);
-    mediaSession(rel.title, rel.credit, rel.cover.jpg, false);
-    emit({ current: id, playing: true, via });
-  },
-
-  /* Hover out only stops what hover started. A clicked preview plays to the end. */
-  stopPreview(id, via = 'click') {
-    if (state.current !== id) return;
-    if (via === 'hover' && state.via !== 'hover') return;
-    afterPreview();
-  },
-
-  togglePreview(id) {
-    if (state.current === id && state.playing && state.via === 'hover') {
-      // Clicking a preview that hover started keeps it going, and leaving the card no longer stops it.
-      emit({ via: 'click' });
-      return;
-    }
-    if (state.current === id && state.playing) {
-      handBack = state.sound;
-      afterPreview();
-    } else {
-      this.playPreview(id, 'click');
-    }
-  },
-
-  /* Playback position of whatever is active, read inside rAF loops (no re-renders). */
+  /* Playback position of the beat, read inside rAF loops (no re-renders). */
   progress() {
-    const el = isBeat(state.current) ? beatEl : prevEl;
+    const el = beatEl;
     if (!el || !state.playing) return { t: 0, d: 0 };
     return { t: el.currentTime || 0, d: Number.isFinite(el.duration) ? el.duration : 0 };
   },
