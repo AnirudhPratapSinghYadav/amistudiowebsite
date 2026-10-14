@@ -8,7 +8,7 @@ import { Icon } from '../components/Icon';
 import { Brush, Cta, Equalizer, Facts, Kicker, Later, Marquee, Picture, Reveal, SectionHead, Tip } from '../components/ui';
 import { GenreBoard, QuoteBand, ScrollWords, SessionMeter, SignalChain, Timecode } from '../components/Interactive';
 import { BeatPlayer } from '../components/Sound';
-import { ArtistLinks, LatestSpotlight, ReleaseCard } from '../components/Releases';
+import { ArtistLinks, ReleaseCard, YouTubeChannelButton } from '../components/Releases';
 import { OpenNow, VisitGrid, WhatsAppButton } from '../components/Visit';
 
 const EASE = [0.22, 1, 0.36, 1];
@@ -202,24 +202,33 @@ export default function Home() {
         <section className="section" aria-labelledby="music-title">
           <div className="wrap">
             <SectionHead num="03" kicker={`${BRAND.producer} on record`} title={<span id="music-title">Don&apos;t take our word. <em>Press</em> play.</span>} split>
-              <div className="stack" style={{ '--gap': '1rem' }}>
+              <div className="stack" style={{ '--gap': '1.25rem' }}>
                 <p className="lead">
-                  {MUSIC_STATS.releases} releases since {MUSIC_STATS.since}. Turn the sound on and every cover plays its preview when you hover. Every icon opens the song where you listen.
+                  All {MUSIC_STATS.releases} of his songs, every one with its own video on YouTube. Pick one and watch it.
                 </p>
+                <YouTubeChannelButton />
                 <Link to="/music" className="link-arrow">
-                  All the music <Icon name="arrowUp" size={14} />
+                  The music page <Icon name="arrowUp" size={14} />
                 </Link>
               </div>
             </SectionHead>
-            <Reveal>
-              <LatestSpotlight />
-            </Reveal>
-            <div className="rel-grid mt-3">
-              {RELEASES.slice(1, 4).map((r, i) => (
-                <Reveal key={r.id} delay={i * 0.08}>
+            <div className="rel-grid rel-grid--songs">
+              {RELEASES.map((r, i) => (
+                <Reveal key={r.id} delay={(i % 4) * 0.08}>
                   <ReleaseCard r={r} />
                 </Reveal>
               ))}
+              <Reveal>
+                <Link to="/book" className="work-slot rel-slot">
+                  <span className="work-slot__plus">
+                    <Icon name="plus" size={24} />
+                  </span>
+                  <span className="h3">
+                    Your record <em>goes here</em>
+                  </span>
+                  <span className="body-dim">Record your vocals here and leave with a radio-ready song.</span>
+                </Link>
+              </Reveal>
             </div>
           </div>
         </section>
