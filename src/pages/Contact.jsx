@@ -102,7 +102,7 @@ export default function Contact() {
       <section className="section" aria-labelledby="follow-title">
         <div className="wrap">
           <SectionHead num="03" kicker="Follow" title={<span id="follow-title">Hear {BRAND.producer} <em>before</em> you pull up.</span>} split>
-            <p className="lead">Every release is on Spotify, Apple Music and YouTube. Instagram is where you follow him.</p>
+            <p className="lead">Every song he has put out is on YouTube. Start there. Instagram is where you follow him.</p>
           </SectionHead>
           <ArtistLinks />
           <div className="row follow-row">

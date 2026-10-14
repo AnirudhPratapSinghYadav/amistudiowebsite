@@ -25,7 +25,7 @@ export const PAGE_META = {
   '/music': {
     page: 'Music',
     title: 'Music',
-    description: `${MUSIC_STATS.releases} releases from ${producer}: ${RELEASES.map((r) => r.title).join(', ')}. Hover to preview, play his beats on the deck, then open every song on Spotify, Apple Music, YouTube and more.`,
+    description: `${MUSIC_STATS.releases} songs from ${producer}: ${RELEASES.map((r) => r.title).join(', ')}. Watch every one on YouTube, then play his beats on the deck.`,
   },
   '/studio': {
     page: 'Studio',

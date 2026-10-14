@@ -176,7 +176,7 @@ export function Facts() {
   const facts = [
     { num: BRAND.years.replace('+', ''), unit: '+', label: 'Years of experience' },
     { num: BRAND.sessionRate, pre: BRAND.currency, label: 'Per hour, studio session' },
-    { num: MUSIC_STATS.releases, label: 'Releases out on Spotify' },
+    { num: MUSIC_STATS.onYouTube, label: 'Songs on YouTube' },
     { num: hours.close - hours.open, unit: 'h', label: `Hours a day, ${hours.days.toLowerCase()}. ${hours.label}` },
   ];
   return (

@@ -25,10 +25,10 @@
     "hours": { "open": 8, "close": 22, "days": "Every day", "label": "8 am to 10 pm", "tz": "America/Edmonton" }
   },
   "socials": [
+    { "id": "youtube", "label": "YouTube", "href": "https://www.youtube.com/@AMImusic05" },
     { "id": "instagram", "label": "Instagram", "handle": "@ami.a.official", "href": "https://www.instagram.com/ami.a.official/" },
     { "id": "spotify", "label": "Spotify", "href": "https://open.spotify.com/artist/6Z5wwu6YqtMH9gaQZF6QiV" },
     { "id": "appleMusic", "label": "Apple Music", "href": "https://music.apple.com/us/artist/ami/1765289275" },
-    { "id": "youtube", "label": "YouTube", "href": "https://www.youtube.com/@AMImusic05" },
     { "id": "soundcloud", "label": "SoundCloud", "href": "https://soundcloud.com/ami-sharma-52920892" },
     { "id": "linktree", "label": "Linktree", "href": "https://linktr.ee/iamimusic05" }
   ],

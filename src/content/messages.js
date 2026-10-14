@@ -22,8 +22,8 @@ export const MSG = {
     return `Hi ${P}, I want to book ${s.name}${rate} at ${N}. Here is what I have:`;
   },
 
-  /* After hearing one of AMI's releases. */
-  release: (r) => `Hi ${P}, I just played ${r.title} on the ${N} site. I want to make a song with that energy.`,
+  /* From one of AMI's releases. */
+  release: (r) => `Hi ${P}, I saw ${r.title} on the ${N} site. I want to make a song with that energy.`,
 
   /* After hearing one of the beats on the deck. */
   beat: (b) => `Hi ${P}, I heard your beat ${b.title} on the ${N} site. I want something in that lane for my song.`,

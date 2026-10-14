@@ -175,8 +175,8 @@ export const FAQ = [
   { q: 'When are you open?', a: `Every day, from ${contact.hours.label}.` },
   { q: 'How do I reach you?', a: `WhatsApp ${contact.whatsappDisplay} (WhatsApp only, no regular calls or texts), or email ${contact.email}. The booking form sends straight to either one.` },
   { q: 'Which genres do you take?', a: 'Hip-hop is home. Trap, R&B, Afro, drill and more are all welcome.' },
-  { q: `Can I hear ${BRAND.producer}'s work?`, a: `Yes. His releases are on the Music page with previews, plus links to Spotify, Apple Music, YouTube and more. His beats ${BEATS.map((b) => b.title).join(' and ')} play on the deck on the Music and Studio pages.` },
-  { q: `Where do I follow ${BRAND.producer}?`, a: `Instagram is ${BRAND.social.instagram.handle}. His music is on Spotify, Apple Music, YouTube and SoundCloud, and every link is in the site footer.` },
+  { q: `Can I hear ${BRAND.producer}'s work?`, a: `Yes. Every one of his songs is on YouTube, and the Music page links straight to each video. They are on Spotify, Apple Music and more too. His beats ${BEATS.map((b) => b.title).join(' and ')} play on the deck on the Music and Studio pages.` },
+  { q: `Where do I follow ${BRAND.producer}?`, a: `YouTube first: every song and video is on his channel. Instagram is ${BRAND.social.instagram.handle}. His music is also on Spotify, Apple Music and SoundCloud, and every link is in the site footer.` },
   { q: 'Who runs the room?', a: `${BRAND.producer}: music producer, songwriter and artist, with ${BRAND.years} years of experience.` },
 ];
 

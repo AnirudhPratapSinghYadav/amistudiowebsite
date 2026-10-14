@@ -21,10 +21,10 @@ export default function Privacy() {
           </p>
           <h2>What we do not do</h2>
           <p>
-            No tracking cookies, no analytics scripts, no advertising pixels, no selling or sharing your details. Music previews and the beat play from this site, not from a third-party player. The prep checklist and the one-minute send limit are saved on your own device and never sent to us.
+            No tracking cookies, no analytics scripts, no advertising pixels, no selling or sharing your details. The beats play from this site, not from a third-party player. Songs open on YouTube only when you press a button. The prep checklist and the one-minute send limit are saved on your own device and never sent to us.
           </p>
           <h2>Links out</h2>
-          <p>Instagram, Spotify, Apple Music, YouTube, YouTube Music, TIDAL, SoundCloud, Linktree, WhatsApp and Google Maps links open those services in a new tab. Nothing loads from them until you click.</p>
+          <p>YouTube, Instagram, Spotify, Apple Music, YouTube Music, TIDAL, SoundCloud, Linktree, WhatsApp and Google Maps links open those services in a new tab. Nothing loads from them until you click.</p>
           <h2>How long we keep it</h2>
           <p>Only as long as we need it to arrange and run your session. Ask us to delete it at any time.</p>
           <h2>Questions</h2>
