@@ -1,14 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BRAND } from '../config/brand';
 import { BEATS, MUSIC_STATS, RELEASES } from '../content/music';
 import { usePageMeta } from '../lib/usePageMeta';
-import { useAudio } from '../lib/audio';
 import { Icon } from '../components/Icon';
 import { Cta, Kicker, Reveal, SectionHead } from '../components/ui';
-import { SoundToggle } from '../components/Sound';
 import { Deck } from '../components/Deck';
-import { ArtistLinks, LatestSpotlight, ReleaseCard, ReleaseList, VideoCard } from '../components/Releases';
+import { ArtistLinks, LatestSpotlight, ReleaseCard, ReleaseList, VideoCard, YouTubeChannelButton } from '../components/Releases';
 
 function CoverWall() {
   const row = [...RELEASES, ...RELEASES];
@@ -27,11 +25,7 @@ function CoverWall() {
 
 export default function Music() {
   usePageMeta('/music');
-  const s = useAudio();
-  const [year, setYear] = useState('All');
   const [view, setView] = useState('grid');
-  const years = useMemo(() => ['All', ...new Set(RELEASES.map((r) => r.year))], []);
-  const list = year === 'All' ? RELEASES : RELEASES.filter((r) => r.year === year);
 
   return (
     <>
@@ -48,11 +42,10 @@ export default function Music() {
             {MUSIC_STATS.releases} records. <em>Press</em> play.
           </h1>
           <p className="lead">
-            {MUSIC_STATS.releases} songs, {MUSIC_STATS.videos} music videos, one producer. Hover a cover to hear it, then open it wherever you listen.
+            {MUSIC_STATS.releases} songs, {MUSIC_STATS.videos} music videos, one producer. Every song plays on YouTube.
           </p>
-          <div className="music-hero__sound">
-            <SoundToggle className="sound-btn--big" />
-            <span className="body-dim">{s.sound ? 'Sound is on. Hover any cover.' : 'Turn the sound on and hovering a cover plays it.'}</span>
+          <div className="music-hero__cta">
+            <YouTubeChannelButton className="yt-btn--xl" />
           </div>
         </div>
       </section>
@@ -73,8 +66,8 @@ export default function Music() {
               <dd>{MUSIC_STATS.visualizers}</dd>
             </div>
             <div>
-              <dt>Releasing since</dt>
-              <dd>{MUSIC_STATS.since}</dd>
+              <dt>Years of experience</dt>
+              <dd>{BRAND.years}</dd>
             </div>
           </dl>
         </div>
@@ -89,18 +82,11 @@ export default function Music() {
 
       <section className="section section--deep" aria-labelledby="all-title">
         <div className="wrap">
-          <SectionHead num="01" kicker="Discography" title={<span id="all-title">Hover <em>the</em> covers.</span>} split>
-            <p className="lead">The record slides out and spins while the preview plays. Tap play on a phone. Every icon under a cover opens that song on that platform.</p>
+          <SectionHead num="01" kicker="Discography" title={<span id="all-title">Pick a song. <em>Watch it</em> on YouTube.</span>} split>
+            <p className="lead">Every song opens on {BRAND.producer}&apos;s YouTube. The small icons underneath take you to Spotify, Apple Music and the rest.</p>
           </SectionHead>
           <div className="work-toolbar">
-            <div className="work-filters" role="group" aria-label="Filter by year">
-              {years.map((y) => (
-                <button key={y} type="button" className="chip" aria-pressed={year === y} onClick={() => setYear(y)}>
-                  {y}
-                  {y !== 'All' ? <span aria-hidden="true">{RELEASES.filter((r) => r.year === y).length}</span> : null}
-                </button>
-              ))}
-            </div>
+            <span className="meter__label">{MUSIC_STATS.releases} songs</span>
             <div className="view-toggle" role="group" aria-label="Layout">
               <button type="button" aria-pressed={view === 'grid'} onClick={() => setView('grid')} aria-label="Grid view">
                 <Icon name="grid" size={16} />
@@ -112,9 +98,9 @@ export default function Music() {
           </div>
 
           {view === 'grid' ? (
-            <div className="rel-grid">
-              {list.map((r, i) => (
-                <Reveal key={r.id} delay={(i % 3) * 0.08}>
+            <div className="rel-grid rel-grid--songs">
+              {RELEASES.map((r, i) => (
+                <Reveal key={r.id} delay={(i % 4) * 0.08}>
                   <ReleaseCard r={r} />
                 </Reveal>
               ))}
@@ -131,7 +117,7 @@ export default function Music() {
               </Reveal>
             </div>
           ) : (
-            <ReleaseList list={list} />
+            <ReleaseList list={RELEASES} />
           )}
         </div>
       </section>
@@ -161,7 +147,7 @@ export default function Music() {
             {BEATS.length} beats. <em>One</em> needle.
           </>
         }
-        lead={`${BEATS.map((b) => b.title).join(' and ')}, straight from ${BRAND.producer}. Drop the needle, flip between them, and hear the room before you walk in. They also play when you turn the sound on, and step aside whenever you preview a song.`}
+        lead={`${BEATS.map((b) => b.title).join(' and ')}, straight from ${BRAND.producer}. Drop the needle, flip between them, and hear the room before you walk in. They also play when you turn the sound on.`}
       />
 
       <section className="section" aria-labelledby="follow-title">

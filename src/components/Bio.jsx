@@ -22,9 +22,9 @@ function useWide() {
 
 function Stats() {
   const items = [
-    { n: MUSIC_STATS.releases, l: 'Releases out on Spotify' },
+    { n: MUSIC_STATS.onYouTube, l: 'Songs on YouTube' },
     { n: MUSIC_STATS.videos, l: 'Official music videos' },
-    { n: MUSIC_STATS.since, l: 'Releasing since' },
+    { n: MUSIC_STATS.visualizers, l: 'Official visualizer' },
   ];
   return (
     <dl className="bio__stats">
@@ -132,21 +132,25 @@ export function BioReveal() {
   );
 }
 
-/* Release timeline, oldest first, built from the verified release dates. */
+/* Song timeline, first record to latest. Numbered, never dated: the client does not want years shown. */
 export function ReleaseTimeline() {
   const list = [...RELEASES].reverse();
   return (
     <ol className="timeline">
       {list.map((r, i) => (
         <Reveal as="li" key={r.id} className="timeline__item" delay={(i % 3) * 0.06}>
-          <span className="timeline__date">{r.dateLabel}</span>
+          <span className="timeline__date">
+            <span className="sr-only">Song </span>
+            {String(i + 1).padStart(2, '0')}
+          </span>
           <span className="timeline__dot" aria-hidden="true" />
           <div className="timeline__body">
             <img src={r.cover.small} alt="" width="320" height="320" loading="lazy" decoding="async" />
             <div>
               <h3 className="timeline__title">
-                <a href={r.links.spotify} target="_blank" rel="noopener noreferrer">
+                <a href={r.youtube} target="_blank" rel="noopener noreferrer">
                   {r.title}
+                  <span className="sr-only"> on YouTube</span>
                 </a>
               </h3>
               <p className="body-dim">

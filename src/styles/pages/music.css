@@ -6,7 +6,7 @@
 .cover-wall__row--2 { animation-duration: 90s; }
 .cover-wall img { width: clamp(120px, 16vw, 220px); aspect-ratio: 1; border-radius: 8px; object-fit: cover; }
 .page-hero--music::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, color-mix(in srgb, var(--bg-void) 70%, transparent), color-mix(in srgb, var(--bg-void) 55%, transparent) 40%, var(--bg-void) 95%), radial-gradient(60% 50% at 20% 70%, color-mix(in srgb, var(--bg-void) 70%, transparent), transparent); }
-.music-hero__sound { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.music-hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
 .stat-strip { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 @media (min-width: 900px) { .stat-strip { grid-template-columns: repeat(4, 1fr); } }
 .stat-strip > div { display: flex; flex-direction: column-reverse; gap: 0.6rem; padding: clamp(1.25rem, 3vw, 2rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }

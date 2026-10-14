@@ -35,7 +35,7 @@ export default function About() {
               {BRAND.years} years <em>behind</em> the desk.
             </Reveal>
             <p className="lead" data-todo="Client to supply a longer bio in his own words.">
-              {BRAND.producer} is a music producer, songwriter and artist with {BRAND.years} years of experience. He runs {BRAND.name}, an audio production house in {BRAND.contact.address.city}, and releases his own music on Spotify, Apple Music and YouTube.
+              {BRAND.producer} is a music producer, songwriter and artist with {BRAND.years} years of experience. He runs {BRAND.name}, an audio production house in {BRAND.contact.address.city}, and releases his own music on YouTube, Spotify and Apple Music.
             </p>
             <p className="body-dim">
               Look above the desk: three letters, {BRAND.wallMark}. The poster on the wall says the rest. Bring your ideas, let&apos;s make it real.
@@ -74,13 +74,13 @@ export default function About() {
               He makes records <em>for himself</em> too.
             </Reveal>
             <p className="lead">
-              {MUSIC_STATS.releases} releases since {MUSIC_STATS.since}, {MUSIC_STATS.videos} official music videos and a feature with {MUSIC_STATS.features.join(', ')} on Barood. When you jam with him, you are working with someone who ships his own songs.
+              {MUSIC_STATS.releases} songs, {MUSIC_STATS.videos} official music videos and a feature with {MUSIC_STATS.features.join(', ')} on Barood. All of it is on YouTube. When you jam with him, you are working with someone who ships his own songs.
             </p>
-            <ArtistLinks className="artist-links--compact" />
+            <ArtistLinks className="artist-links--compact" channel />
             <div className="row">
-              <InstagramButton className="btn btn--primary" />
+              <InstagramButton className="btn btn--ghost" />
               <Link to="/music" className="link-arrow">
-                Hear the releases <Icon name="arrowUp" size={14} />
+                See every song <Icon name="arrowUp" size={14} />
               </Link>
             </div>
           </div>
@@ -89,8 +89,8 @@ export default function About() {
 
       <section className="section section--deep" aria-labelledby="timeline-title">
         <div className="wrap">
-          <SectionHead num="04" kicker="On the record" title={<span id="timeline-title">Release <em>by</em> release.</span>} split>
-            <p className="lead">Oldest first, straight from the release dates on Spotify. Click any title to play it there.</p>
+          <SectionHead num="04" kicker="On the record" title={<span id="timeline-title">Song <em>by</em> song.</span>} split>
+            <p className="lead">From the first record to the latest. Press any song to watch it on YouTube.</p>
           </SectionHead>
           <ReleaseTimeline />
         </div>

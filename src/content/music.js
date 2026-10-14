@@ -1,13 +1,14 @@
 // Releases from AMI's Linktree, verified against Spotify and YouTube (see releases.json `_source`).
-// Covers, previews and video stills are self-hosted copies made by scripts/build_media.py.
+// Covers and video stills are self-hosted copies made by scripts/build_media.py.
+// The client wants no release years and no song previews on the site; every song leads to YouTube.
 import DATA from './releases.json' with { type: 'json' };
 import WAVES from './waveforms.json' with { type: 'json' };
 import BEAT_DATA from './beats.json' with { type: 'json' };
 
 export const PLATFORMS = {
+  youtube: { label: 'YouTube', verb: 'Watch on YouTube' },
   spotify: { label: 'Spotify', verb: 'Listen on Spotify' },
   appleMusic: { label: 'Apple Music', verb: 'Listen on Apple Music' },
-  youtube: { label: 'YouTube', verb: 'Watch on YouTube' },
   youtubeMusic: { label: 'YouTube Music', verb: 'Listen on YouTube Music' },
   tidal: { label: 'TIDAL', verb: 'Listen on TIDAL' },
   soundcloud: { label: 'SoundCloud', verb: 'Listen on SoundCloud' },
@@ -18,24 +19,21 @@ const fmtDur = (ms) => {
   const s = Math.round(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 };
-const fmtDate = (iso) =>
-  new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${iso}T00:00:00Z`));
-
-export const ARTIST = DATA.artist;
-
+/* `date` stays in the data only to keep newest-first order; it is never rendered. */
 export const RELEASES = DATA.releases.map((r, i) => ({
-  ...r,
+  id: r.id,
+  title: r.title,
+  explicit: r.explicit,
+  video: r.video,
+  youtube: r.links.youtube,
   num: String(i + 1).padStart(2, '0'),
-  year: r.date.slice(0, 4),
-  dateLabel: fmtDate(r.date),
   duration: fmtDur(r.durationMs),
   feat: r.artists.slice(1),
   credit: r.artists.length > 1 ? `${r.artists[0]} feat. ${r.artists.slice(1).join(', ')}` : r.artists[0],
   cover: { webp: `/releases/${r.id}-cover-320.webp 320w, /releases/${r.id}-cover-640.webp 640w`, jpg: `/releases/${r.id}-cover-640.jpg`, small: `/releases/${r.id}-cover-320.webp` },
   still: { webp: `/releases/${r.id}-video-640.webp 640w, /releases/${r.id}-video-1280.webp 1280w`, src: `/releases/${r.id}-video-640.webp` },
-  preview: `/audio/${r.id}-preview.mp3`,
-  wave: WAVES[r.id] || [],
-  platforms: ORDER.filter((k) => r.links[k]).map((k) => ({ id: k, href: r.links[k], ...PLATFORMS[k] })),
+  /* Everywhere else the song lives, shown small under the YouTube button. */
+  also: ORDER.filter((k) => k !== 'youtube' && r.links[k]).map((k) => ({ id: k, href: r.links[k], ...PLATFORMS[k] })),
 }));
 
 export const LATEST = RELEASES[0];
@@ -56,14 +54,10 @@ export const BEAT = BEATS[0];
 export const findBeat = (id) => BEATS.find((b) => b.id === id);
 export const isBeat = (id) => BEATS.some((b) => b.id === id);
 
-const years = RELEASES.map((r) => Number(r.year));
 export const MUSIC_STATS = {
   releases: RELEASES.length,
+  onYouTube: RELEASES.filter((r) => r.youtube).length,
   videos: RELEASES.filter((r) => r.video === 'Official Music Video').length,
   visualizers: RELEASES.filter((r) => r.video === 'Official Visualizer').length,
-  since: Math.min(...years),
-  latestYear: Math.max(...years),
   features: [...new Set(RELEASES.flatMap((r) => r.feat))],
 };
-
-export const findRelease = (id) => RELEASES.find((r) => r.id === id);
